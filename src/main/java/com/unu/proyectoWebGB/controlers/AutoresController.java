@@ -6,7 +6,11 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.lang.System.Logger.Level;
+import java.util.Iterator;
+import java.util.logging.Logger;
 
+import com.unu.proyectoWebGB.beans.Autor;
 import com.unu.proyectoWebGB.models.AutoresModel;
 
 /**
@@ -34,7 +38,7 @@ public class AutoresController extends HttpServlet {
 		String operacion = request.getParameter("op");
 		switch (operacion) {
 		case "listar": {
-			// listar
+			listar(request, response);
 			break;
 		}
 		case "nuevo":
@@ -45,8 +49,19 @@ public class AutoresController extends HttpServlet {
 	}
 
 	private void listar(HttpServletRequest request, HttpServletResponse response) {
-		request.setAttribute("listaAutores", modelo.listarAutores());
-		request.getRequestDispatcher("/autores/listaAutores.jsp");
+		try {
+			request.setAttribute("listaAutores", modelo.listarAutores());
+			
+		Iterator<Autor> it = modelo.listarAutores().iterator();
+		while (it.hasNext()) {
+			Autor a =it.next();
+			System.out.println(a.getIdAutor()+ " " + a.getNombre() + " " + a.getNacionalidad());
+		}
+		request.getRequestDispatcher("/autores/listaAutores.jsp").forward(request, response);
+		
+		} catch (ServletException | IOException ex) {			// TODO: handle exception
+			Logger.getLogger(AutoresController.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+		}
 	}
 
 	/**
