@@ -6,6 +6,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.lang.System.Logger.Level;
 //import java.lang.System.Logger.Level;
 import java.util.Iterator;
 import java.util.logging.Logger;
@@ -31,8 +32,7 @@ public class AutoresController extends HttpServlet {
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response) {
 
 		if (request.getParameter("op") == null) {
-			//listar();
-
+			listar(request, response);
 			return;
 		}
 		String operacion = request.getParameter("op");
@@ -71,7 +71,7 @@ public class AutoresController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		processRequest(request, response);
 	}
 
 	/**
@@ -81,7 +81,8 @@ public class AutoresController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		processRequest(request, response);
+		
 	}
 
 }
