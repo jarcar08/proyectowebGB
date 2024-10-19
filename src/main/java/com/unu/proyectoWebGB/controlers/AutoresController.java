@@ -6,6 +6,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.lang.System.Logger.Level;
 //import java.lang.System.Logger.Level;
 import java.util.Iterator;
@@ -29,8 +30,9 @@ public class AutoresController extends HttpServlet {
 		// TODO Auto-generated constructor stub
 	}
 
-	protected void processRequest(HttpServletRequest request, HttpServletResponse response) {
-
+	protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html;charset=UTF-8");
+		try(PrintWriter out = response.getWriter()) {
 		if (request.getParameter("op") == null) {
 			listar(request, response);
 			return;
@@ -44,6 +46,7 @@ public class AutoresController extends HttpServlet {
 		case "nuevo":
 			// nuevo
 			return;
+			}
 		}
 
 	}
@@ -60,7 +63,7 @@ public class AutoresController extends HttpServlet {
 		request.getRequestDispatcher("/autores/listaAutores.jsp").forward(request, response);
 		
 		} catch (ServletException | IOException ex) {			// TODO: handle exception
-			Logger.getLogger(AutoresController.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+			Logger.getLogger(AutoresController.class.getName()).log(java.util.logging.Level.SEVERE,null,ex);
 		}
 	}
 
