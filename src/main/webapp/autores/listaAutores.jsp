@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>MI PRIMERA TABLA</title>
 
 </head>
 <body>
@@ -23,7 +23,8 @@
 	</thead>
 	<tbody>
 		<%
-		List<Autor> listaAutores = (List<Autor>) request.getAttribute("listaAutores");
+		@SuppressWarnings("unchecked")
+		List<Autor> listaAutores = (List <Autor>) request.getAttribute("listaAutores");
 		if (listaAutores != null) {
 			for (Autor autor : listaAutores) {
 		%>
@@ -42,6 +43,8 @@
 			<td>No hay Datos</td>
 			<td>No hay Datos</td>
 			<td>No hay Datos</td>
+			<td>No hay Datos</td>
+			
 			<td></td>
 		</tr>
 		<%

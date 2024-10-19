@@ -1,12 +1,12 @@
 package com.unu.proyectoWebGB.controlers;
 
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
+//import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.lang.System.Logger.Level;
+//import java.lang.System.Logger.Level;
 import java.util.Iterator;
 import java.util.logging.Logger;
 
@@ -31,7 +31,7 @@ public class AutoresController extends HttpServlet {
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response) {
 
 		if (request.getParameter("op") == null) {
-			// listar();
+			//listar();
 
 			return;
 		}
