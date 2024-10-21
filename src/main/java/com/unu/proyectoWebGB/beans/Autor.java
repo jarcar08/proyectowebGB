@@ -2,18 +2,19 @@ package com.unu.proyectoWebGB.beans;
 
 public class Autor {
 	private int idAutor;
-	private String nacionalidad;
 	private String nombre;
+	private String nacionalidad;
+	
 
 	public Autor() {
 		this(0, "", "");
 	}
 
-	public Autor(int idAutor, String nacionalidad, String nombre) {
+	public Autor(int idAutor, String nombre,  String nacionalidad) {
 		super();
 		this.idAutor = idAutor;
-		this.nacionalidad = nacionalidad;
 		this.nombre = nombre;
+		this.nacionalidad = nacionalidad;
 	}
 
 	public int getIdAutor() {

@@ -11,6 +11,7 @@ public class AutoresModel {
 		autores.add(new Autor(1, "Garcia Marquez", "Colombia"));
 		autores.add(new Autor(2, "Borges", "Argentina"));
 		autores.add(new Autor(3, "Allende", "Chilena"));
+		autores.add(new Autor(4,"Jara", "Peru"));
 		return autores;
 	}
 

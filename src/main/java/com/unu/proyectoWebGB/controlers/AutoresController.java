@@ -2,7 +2,7 @@ package com.unu.proyectoWebGB.controlers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.lang.System.Logger;
+//import java.lang.System.Logger;
 import java.util.Iterator;
 import java.util.logging.Level;
 
@@ -68,7 +68,7 @@ public class AutoresController extends HttpServlet {
 			Iterator<Autor> it = modelo.listarAutores().iterator();
 			while (it.hasNext()) {
 				Autor a = it.next();
-				System.out.println(a.getIdAutor()+ " " + a.getNacionalidad()+ " " + a.getNombre());
+				System.out.println(a.getIdAutor()+ " " + a.getNombre()+ " " + a.getNacionalidad());
 			}
 			
 			request.getRequestDispatcher("/autores/listaAutores.jsp").forward(request, response);
