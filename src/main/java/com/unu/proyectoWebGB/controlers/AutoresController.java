@@ -2,6 +2,7 @@ package com.unu.proyectoWebGB.controlers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 //import java.lang.System.Logger;
 import java.util.Iterator;
 import java.util.logging.Level;
@@ -31,12 +32,13 @@ public class AutoresController extends HttpServlet {
 	}
 
 	/**
+	 * @throws SQLException 
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
 
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+			throws ServletException, IOException, SQLException {
 		response.setContentType("text/html;charset=UTF-8");
 		try (PrintWriter out = response.getWriter()) {
 			if (request.getParameter("op") == null) {
@@ -61,28 +63,32 @@ public class AutoresController extends HttpServlet {
 		}
 	}
 
-	private void listar(HttpServletRequest request, HttpServletResponse response) {
+	private void listar(HttpServletRequest request, HttpServletResponse response) throws SQLException {
 		try {
 			request.setAttribute("listaAutores", modelo.listarAutores());
-			
+
 			Iterator<Autor> it = modelo.listarAutores().iterator();
 			while (it.hasNext()) {
 				Autor a = it.next();
-				System.out.println(a.getIdAutor()+ " " + a.getNombre()+ " " + a.getNacionalidad());
+				System.out.println(a.getIdAutor() + " " + a.getNombre() + " " + a.getNacionalidad());
 			}
-			
+
 			request.getRequestDispatcher("/autores/listaAutores.jsp").forward(request, response);
-		
+
 		} catch (ServletException | IOException ex) {
 			java.util.logging.Logger.getLogger(AutoresController.class.getName()).log(Level.SEVERE, null, ex);
 		}
 	}
-	
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		processRequest(request, response);
+		try {
+			processRequest(request, response);
+
+		} catch (ServletException | IOException | SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -92,7 +98,12 @@ public class AutoresController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		processRequest(request, response);
+		try {
+			processRequest(request, response);
+		} catch (ServletException | IOException | SQLException  e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
 	}
 
 }
