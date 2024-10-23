@@ -32,7 +32,7 @@ public class AutoresController extends HttpServlet {
 	}
 
 	/**
-	 * @throws SQLException 
+	 * @throws SQLException
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
@@ -51,6 +51,10 @@ public class AutoresController extends HttpServlet {
 			case "listar":
 				listar(request, response);
 				break;
+			case "nuevo":
+				request.getRequestDispatcher("/autores/NuevoAutor.jsp").forward(request, response);
+				break;
+
 			/*
 			 * case "nuevo":
 			 * request.getRequestDispatcher("/autores/nuevoAutor.jsp").forward(request,
@@ -100,7 +104,7 @@ public class AutoresController extends HttpServlet {
 		// TODO Auto-generated method stub
 		try {
 			processRequest(request, response);
-		} catch (ServletException | IOException | SQLException  e) {
+		} catch (ServletException | IOException | SQLException e) {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
