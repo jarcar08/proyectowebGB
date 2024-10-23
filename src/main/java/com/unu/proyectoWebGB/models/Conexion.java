@@ -9,7 +9,7 @@ public class Conexion {
 	private String url = "jdbc:mysql://localhost:3306/bibliotecapoo2";
 	private String usuario = "root";
 	private String contrasenia = "123456";
-	protected java.sql.Connection conexion;
+	protected Connection conexion;
 
 	public void abrirConexion() {
 		try {
@@ -27,7 +27,7 @@ public class Conexion {
 		try {
 			if (conexion != null && !conexion.isClosed()) {
 				conexion.close();
-				System.out.println("Conexion cerrada");
+				System.out.println("Conexion cerrada.");
 			}
 
 		} catch (SQLException e) {

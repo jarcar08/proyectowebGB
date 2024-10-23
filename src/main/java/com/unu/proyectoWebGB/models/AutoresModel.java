@@ -6,12 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import com.mysql.cj.jdbc.CallableStatement;
+//import com.mysql.cj.jdbc.CallableStatement;
 import com.unu.proyectoWebGB.beans.Autor;
 
 public class AutoresModel extends Conexion {
-	CallableStatement cs;
+	java.sql.CallableStatement cs;
 	ResultSet rs;
 
 	/*
@@ -27,7 +26,7 @@ public class AutoresModel extends Conexion {
 			List<Autor> lista = new ArrayList<>();
 			String sql = "CALL sp_listarAutor()";
 			this.abrirConexion();
-			cs = (CallableStatement) conexion.prepareCall(sql);
+			cs = conexion.prepareCall(sql);
 			rs = cs.executeQuery();
 			while (rs.next()) {
 				Autor autor = new Autor();
